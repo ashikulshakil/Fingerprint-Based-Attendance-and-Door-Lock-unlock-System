@@ -1,0 +1,1 @@
+<div id="footer">Finger Print Based Attendance And Door Lock-Unlock System</div>
