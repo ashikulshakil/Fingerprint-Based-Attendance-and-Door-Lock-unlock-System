@@ -77,5 +77,5 @@ Route::get('test3/{prisw3}/{prisw4}',
 
 
 Route::post('/changePassword', ['as' => 'changePassword', 'uses' => 'UserController@changePassword']);
-Route::get('/logout','userController@logout');
+Route::get('/logout','UserController@logout');
 Route::post('/login', ['as' => 'login', 'uses' => 'UserController@login']);
