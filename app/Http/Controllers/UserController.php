@@ -250,8 +250,13 @@ if($n=='1')
 else if($n=='2')
   $id="0".$id;
 
+$ipp=DB::table('ipaddress')
+           ->get();
+           foreach ($ipp as $ipp)
+       $ip="$ipp->ip";
+   $stri="http://".$ip."/";
  //$f = file_get_contents('http://localhost/sh.php?id='.$id.'');
-     @$content = file_get_contents('http://10.100.165.239/'.$id.'');
+     @$content = file_get_contents($stri.$id.'');
 
 if( !empty($content) )
 {
