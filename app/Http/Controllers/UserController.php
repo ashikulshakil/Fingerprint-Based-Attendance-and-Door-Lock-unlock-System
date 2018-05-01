@@ -8,6 +8,7 @@ use DB;
 use Auth;
 use Hash;
 use App\Http\Requests\RegiRequest;
+use App\Http\Requests\EmployeeRequest;
 use View;
  
 class UserController extends Controller
@@ -29,10 +30,28 @@ class UserController extends Controller
 
  public function switchInfo($prisw){
 
+        $id="234";
+        $ipp=DB::table('ipaddress')
+           ->get();
+           foreach ($ipp as $ipp)
+       $ip="$ipp->ip";
+   $stri="http://".$ip."/";
+
+ //$f = file_get_contents('http://localhost/sh.php?id='.$id.'');
+     @$content = file_get_contents($stri.$id.'');
+
+
+
+
+
+if( !empty($content) )
+{
+         
           DB::table('request')->where('sensorId', '=',$prisw)->delete();
          return redirect()->to('requestdata');
         //return $prisw;
        //do stuffs here with $prisw and $secsw
+         }
     }
 
 
@@ -232,7 +251,7 @@ function showRecordDate(Request $request) {
 
 
 
-    public function postAdd(Request $request) {
+    public function postAdd(EmployeeRequest $request) {
       
         $id=$request->sensorId;
        

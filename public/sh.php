@@ -1,7 +1,7 @@
 <?php
-$user='root';
-$pass='';
-$db='fingerprintsensor';
+$user='root_finger';
+$pass='csecse';
+$db='fingerprint';
 if(!empty($_GET["id"])){
   $A= $_GET["id"]; 
 //$A="240";
@@ -39,8 +39,20 @@ date_default_timezone_set("asia/dhaka");
  
  if($A!=null){
  if($A=="240"){
+  $result5="SELECT count(id) AS total FROM request";
+ $r5 = $conn->query($result5);
+ $row5 = $r5->fetch_assoc();
+ $coun=$row5["total"];
+	  
+if($coun==0)	  
+{
  $sql = "INSERT INTO request (sensorId, date,time)VALUES ('$A','$date','$time')";
  $conn->query($sql);
+}
+else {
+ $sql = "UPDATE request SET sensorId = '$A',date='$date',time='$time' ";
+ $conn->query($sql);
+}
  }
  else
  {
