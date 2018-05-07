@@ -279,6 +279,7 @@ $ipp=DB::table('ipaddress')
 
 if( !empty($content) )
 {
+  DB::table('request')->where('sensorId', '=','240')->delete();
    return "SUCCESSFUL";
 }
 else
